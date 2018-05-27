@@ -12,8 +12,6 @@ import shutil
 import stat
 import traceback
 import warnings
-from builtins import map
-from builtins import str
 from collections import (
     namedtuple,
 )
@@ -108,6 +106,7 @@ from medusa.tv.episode import Episode
 from medusa.tv.indexer import Indexer
 
 from six import iteritems, itervalues, string_types, text_type, viewitems
+from six.moves import map
 
 try:
     from send2trash import send2trash

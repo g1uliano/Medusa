@@ -27,8 +27,6 @@ import os
 import re
 import subprocess
 import time
-from builtins import object
-from builtins import str
 
 from babelfish import Country, Language, LanguageConvertError, LanguageReverseError, language_converters
 

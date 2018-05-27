@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 import os
-from builtins import object
 
 from medusa import app
 from medusa.helper.common import try_int

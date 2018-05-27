@@ -31,7 +31,6 @@ from __future__ import unicode_literals
 import copy
 import logging
 import re
-from builtins import range
 
 from guessit.rules.common.comparators import marker_sorted
 from guessit.rules.common.formatters import cleanup
@@ -41,6 +40,8 @@ from guessit.rules.properties.release_group import clean_groupname
 from rebulk.processors import POST_PROCESS
 from rebulk.rebulk import Rebulk
 from rebulk.rules import AppendMatch, RemoveMatch, RenameMatch, Rule
+
+from six.moves import range
 
 
 log = logging.getLogger(__name__)

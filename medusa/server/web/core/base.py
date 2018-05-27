@@ -7,7 +7,6 @@ import os
 import re
 import time
 import traceback
-from builtins import str
 from concurrent.futures import ThreadPoolExecutor
 
 from mako.exceptions import RichTraceback

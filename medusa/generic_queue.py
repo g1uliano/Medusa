@@ -5,7 +5,6 @@ from __future__ import unicode_literals
 import datetime
 import logging
 import threading
-from builtins import object
 from functools import cmp_to_key
 
 log = logging.getLogger()

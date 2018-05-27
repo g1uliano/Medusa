@@ -23,8 +23,6 @@ import datetime
 import logging
 import os.path
 import re
-from builtins import object
-from builtins import str
 
 from contextlib2 import suppress
 

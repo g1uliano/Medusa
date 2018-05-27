@@ -23,8 +23,6 @@ import os
 import re
 import stat
 import subprocess
-from builtins import object
-from builtins import str
 from collections import OrderedDict
 
 import adba

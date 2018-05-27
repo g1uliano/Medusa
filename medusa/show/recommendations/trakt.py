@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 import logging
 import os
-from builtins import object
 
 from medusa import app
 from medusa.cache import recommended_series_cache

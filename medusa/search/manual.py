@@ -7,7 +7,6 @@ import json
 import logging
 import threading
 import time
-from builtins import zip
 from datetime import datetime
 
 from dateutil import parser
@@ -25,6 +24,8 @@ from medusa.network_timezones import app_timezone
 from medusa.search.queue import FORCED_SEARCH_HISTORY, ForcedSearchQueueItem
 from medusa.show.naming import contains_at_least_one_word, filter_bad_releases
 from medusa.show.show import Show
+
+from six.moves import zip
 
 log = BraceAdapter(logging.getLogger(__name__))
 log.logger.addHandler(logging.NullHandler())

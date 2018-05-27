@@ -9,7 +9,6 @@ import json
 import logging
 import operator
 import traceback
-from builtins import object
 from datetime import date, datetime
 
 from babelfish.language import Language

@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 import logging
-from builtins import str
 
 from medusa import app
 from medusa.logger.adapters.style import BraceAdapter

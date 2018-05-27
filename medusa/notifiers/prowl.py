@@ -6,7 +6,6 @@ import ast
 import logging
 import socket
 import time
-from builtins import object
 
 from medusa import app, common, db
 from medusa.helper.encoding import ss

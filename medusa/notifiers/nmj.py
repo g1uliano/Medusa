@@ -5,7 +5,6 @@ from __future__ import unicode_literals
 import logging
 import re
 import telnetlib
-from builtins import object
 
 from medusa import app
 from medusa.helper.exceptions import ex

@@ -4,8 +4,6 @@
 from __future__ import unicode_literals
 
 import pkgutil
-from builtins import next
-from builtins import zip
 from os import sys
 from random import shuffle
 
@@ -62,6 +60,8 @@ from medusa.providers.torrent import (
     yggtorrent,
     zooqle
 )
+
+from six.moves import zip
 
 __all__ = [
     'btn', 'thepiratebay', 'torrentleech', 'hdtorrents', 'torrentday', 'hdbits',

@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 import logging
 import time
-from builtins import object
 
 from medusa import app
 from medusa.common import (

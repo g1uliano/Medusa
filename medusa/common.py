@@ -24,8 +24,6 @@ import os
 import platform
 import re
 import uuid
-from builtins import object
-from builtins import str
 from functools import reduce
 
 from fake_useragent import UserAgent, settings as ua_settings

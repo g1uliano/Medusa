@@ -20,8 +20,6 @@ from __future__ import unicode_literals
 
 import datetime
 import os
-from builtins import object
-from builtins import str
 
 from medusa import app, common, logger, tv
 from medusa.common import DOWNLOADED, Quality

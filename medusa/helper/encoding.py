@@ -2,13 +2,12 @@
 
 from __future__ import unicode_literals
 
-from builtins import map
-
 from chardet import detect
 
 from medusa import app
 
 from six import text_type
+from six.moves import map
 
 
 def ss(var):

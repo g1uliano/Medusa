@@ -10,9 +10,6 @@ import operator
 import re
 import threading
 import time
-from builtins import map
-from builtins import object
-from builtins import str
 
 from medusa import app, db, helpers
 from medusa.common import DOWNLOADED, SNATCHED, SNATCHED_BEST, SNATCHED_PROPER, SUBTITLED, cpu_presets
@@ -24,6 +21,7 @@ from medusa.search.core import pick_best_result, snatch_episode
 from medusa.show.history import History
 
 from six import itervalues
+from six.moves import map
 
 log = BraceAdapter(logging.getLogger(__name__))
 log.logger.addHandler(logging.NullHandler())

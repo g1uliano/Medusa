@@ -18,15 +18,12 @@
 
 from __future__ import unicode_literals
 
-
 import os
 import re
 import sqlite3
 import threading
 import time
 import warnings
-from builtins import object
-from builtins import str
 
 from medusa import app, logger
 from medusa.helper.exceptions import ex

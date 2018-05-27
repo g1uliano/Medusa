@@ -21,7 +21,6 @@ from __future__ import unicode_literals
 import logging
 import threading
 import time
-from builtins import object
 
 from medusa import app, db, network_timezones, ui
 from medusa.helper.exceptions import CantRefreshShowException, CantUpdateShowException

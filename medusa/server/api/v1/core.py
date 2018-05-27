@@ -29,8 +29,6 @@ import time
 from collections import OrderedDict
 from datetime import date, datetime
 
-from future import standard_library
-
 from medusa import (
     app, classes, db, helpers, image_cache, network_timezones,
     process_tv, sbdatetime, subtitles, ui,
@@ -68,8 +66,6 @@ from six import binary_type, iteritems, itervalues, string_types, text_type, vie
 
 from tornado.web import RequestHandler
 
-
-standard_library.install_aliases()
 
 log = BraceAdapter(logging.getLogger(__name__))
 log.logger.addHandler(logging.NullHandler())

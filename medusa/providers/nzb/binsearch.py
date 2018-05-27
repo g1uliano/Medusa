@@ -6,7 +6,6 @@ from __future__ import unicode_literals
 
 import logging
 import re
-from builtins import zip
 from os.path import join
 
 from medusa import tv
@@ -17,6 +16,8 @@ from medusa.logger.adapters.style import BraceAdapter
 from medusa.providers.nzb.nzb_provider import NZBProvider
 
 from requests.compat import urljoin
+
+from six.moves import zip
 
 log = BraceAdapter(logging.getLogger(__name__))
 log.logger.addHandler(logging.NullHandler())

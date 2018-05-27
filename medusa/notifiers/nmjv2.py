@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 import logging
 import time
-from builtins import object
 from xml.dom.minidom import parseString
 
 from medusa import app

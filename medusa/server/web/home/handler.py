@@ -6,7 +6,6 @@ import ast
 import json
 import os
 import time
-from builtins import str
 from datetime import date, datetime
 
 import adba

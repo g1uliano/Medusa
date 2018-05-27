@@ -2,9 +2,6 @@
 
 from __future__ import unicode_literals
 
-from builtins import object
-from builtins import str
-
 from medusa import app
 from medusa.event_queue import Events
 

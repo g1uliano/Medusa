@@ -17,8 +17,6 @@
 
 from __future__ import unicode_literals
 
-from builtins import object
-
 from bs4 import BeautifulSoup
 
 

@@ -2,11 +2,11 @@
 """Request handler for series operations."""
 from __future__ import unicode_literals
 
-from builtins import map
-
 from medusa.server.api.v2.base import BaseRequestHandler
 from medusa.server.api.v2.series import SeriesHandler
 from medusa.tv.series import Series, SeriesIdentifier
+
+from six.moves import map
 
 
 class SeriesLegacyHandler(BaseRequestHandler):

@@ -6,11 +6,10 @@ from __future__ import unicode_literals
 
 import logging
 import warnings
-from builtins import input
-from builtins import object
-from builtins import str
 
 from medusa.indexers.indexer_exceptions import IndexerUserAbort
+
+from six.moves import input
 
 log = logging.getLogger(__name__)
 log.logger.addHandler(logging.NullHandler())

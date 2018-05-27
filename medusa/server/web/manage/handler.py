@@ -6,7 +6,6 @@ import datetime
 import json
 import os
 import re
-from builtins import str
 
 from medusa import (
     app,

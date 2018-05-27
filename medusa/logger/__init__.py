@@ -27,8 +27,6 @@ import os
 import pkgutil
 import re
 import sys
-from builtins import object
-from builtins import range
 from collections import OrderedDict
 from logging import (
     CRITICAL,
@@ -48,6 +46,7 @@ from medusa.init.logconfig import standard_logger
 from requests.compat import quote
 
 from six import itervalues, string_types, text_type, viewitems
+from six.moves import range
 
 import subliminal
 

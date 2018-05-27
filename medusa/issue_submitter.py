@@ -7,8 +7,6 @@ import locale
 import logging
 import platform
 import sys
-from builtins import object
-from builtins import str
 from datetime import datetime, timedelta
 
 from github import InputFileContent

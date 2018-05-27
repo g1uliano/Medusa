@@ -5,7 +5,6 @@ from __future__ import division
 from __future__ import unicode_literals
 
 import logging
-from builtins import range
 from collections import OrderedDict
 from datetime import datetime, timedelta
 
@@ -19,6 +18,7 @@ from medusa.logger.adapters.style import BraceAdapter
 from requests.exceptions import RequestException
 
 from six import integer_types, string_types, text_type, viewitems
+from six.moves import range
 
 import tmdbsimple as tmdb
 

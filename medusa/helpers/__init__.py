@@ -25,10 +25,6 @@ import traceback
 import uuid
 import xml.etree.ElementTree as ET
 import zipfile
-from builtins import chr
-from builtins import hex
-from builtins import str
-from builtins import zip
 from itertools import cycle
 
 from cachecontrol import CacheControlAdapter
@@ -55,8 +51,8 @@ from medusa.show.show import Show
 import requests
 from requests.compat import urlparse
 
-from six import binary_type, string_types, text_type, viewitems
-from six.moves import http_client
+from six import binary_type, string_types, text_type, unichr, viewitems
+from six.moves import http_client, zip
 
 log = BraceAdapter(logging.getLogger(__name__))
 log.logger.addHandler(logging.NullHandler())
@@ -973,18 +969,18 @@ def encrypt(data, encryption_version=0, _decrypt=False):
     # Version 1: Simple XOR encryption (this is not very secure, but works)
     if encryption_version == 1:
         if _decrypt:
-            return ''.join(chr(ord(x) ^ ord(y)) for (x, y) in zip(base64.decodestring(data), cycle(unique_key1)))
+            return ''.join(unichr(ord(x) ^ ord(y)) for (x, y) in zip(base64.decodestring(data), cycle(unique_key1)))
         else:
             return base64.encodestring(
-                ''.join(chr(ord(x) ^ ord(y)) for (x, y) in zip(data, cycle(unique_key1)))).strip()
+                ''.join(unichr(ord(x) ^ ord(y)) for (x, y) in zip(data, cycle(unique_key1)))).strip()
     # Version 2: Simple XOR encryption (this is not very secure, but works)
     elif encryption_version == 2:
         if _decrypt:
-            return ''.join(chr(ord(x) ^ ord(y)) for (x, y) in zip(base64.decodestring(data),
+            return ''.join(unichr(ord(x) ^ ord(y)) for (x, y) in zip(base64.decodestring(data),
                                                                   cycle(app.ENCRYPTION_SECRET)))
         else:
             return base64.encodestring(
-                ''.join(chr(ord(x) ^ ord(y)) for (x, y) in zip(data, cycle(app.ENCRYPTION_SECRET)))).strip()
+                ''.join(unichr(ord(x) ^ ord(y)) for (x, y) in zip(data, cycle(app.ENCRYPTION_SECRET)))).strip()
     # Version 0: Plain text
     else:
         return data

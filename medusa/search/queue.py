@@ -8,7 +8,6 @@ import logging
 import threading
 import time
 import traceback
-from builtins import str
 
 from medusa import app, common, failed_history, generic_queue, history, providers, ui
 from medusa.helpers import pretty_file_size

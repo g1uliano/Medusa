@@ -7,8 +7,6 @@ from __future__ import unicode_literals
 import itertools
 import logging
 import traceback
-from builtins import object
-from builtins import str
 from time import time
 
 from medusa import (

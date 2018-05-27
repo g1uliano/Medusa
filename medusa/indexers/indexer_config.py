@@ -3,8 +3,6 @@
 """Indexer config module."""
 from __future__ import unicode_literals
 
-from builtins import str
-
 from medusa.app import BASE_PYMEDUSA_URL
 from medusa.indexers.tmdb.tmdb import Tmdb
 from medusa.indexers.tvdbv2.tvdbv2_api import TVDBv2

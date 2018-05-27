@@ -20,7 +20,6 @@
 from __future__ import unicode_literals
 
 import re
-from builtins import str
 from datetime import datetime, timedelta
 
 from medusa import db, logger

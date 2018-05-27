@@ -19,7 +19,6 @@
 from __future__ import unicode_literals
 
 import logging
-from builtins import object
 
 from medusa import app
 from medusa.clients import torrent

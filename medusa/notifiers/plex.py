@@ -4,8 +4,6 @@ from __future__ import unicode_literals
 
 import logging
 import re
-from builtins import object
-from builtins import str
 
 from medusa import app, common
 from medusa.helper.exceptions import ex

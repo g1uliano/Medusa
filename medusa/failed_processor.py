@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 import logging
-from builtins import object
 
 from medusa import app, logger
 from medusa.helper.exceptions import FailedPostProcessingFailedException

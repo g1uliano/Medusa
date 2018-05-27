@@ -18,7 +18,6 @@
 
 from __future__ import unicode_literals
 
-from builtins import object
 from mimetypes import guess_type
 from os.path import isfile, join, normpath
 

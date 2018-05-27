@@ -17,7 +17,6 @@
 
 from __future__ import unicode_literals
 
-from builtins import object
 from collections import namedtuple
 from datetime import datetime, timedelta
 

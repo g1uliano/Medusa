@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 import logging
-from builtins import object
 from inspect import getargspec
 
 from six import text_type

@@ -10,7 +10,6 @@ import re
 import time
 import traceback
 import warnings
-from builtins import str
 from datetime import date, datetime
 
 import knowit

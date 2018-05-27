@@ -27,8 +27,6 @@ import stat
 import subprocess
 import tarfile
 import time
-from builtins import object
-from builtins import str
 from logging import DEBUG, WARNING
 
 from medusa import app, db, helpers, notifiers, ui

@@ -6,8 +6,6 @@ from __future__ import unicode_literals
 
 import json
 import os
-from builtins import str
-from builtins import zip
 from collections import OrderedDict
 
 from medusa import app, config, providers, ui
@@ -19,6 +17,8 @@ from medusa.providers.torrent.torrent_provider import TorrentProvider
 from medusa.providers.torrent.torznab.torznab import TorznabProvider
 from medusa.server.web.config.handler import Config
 from medusa.server.web.core import PageTemplate
+
+from six.moves import zip
 
 from tornroutes import route
 

@@ -20,7 +20,6 @@ from __future__ import unicode_literals
 
 import datetime
 import json
-from builtins import object
 
 from medusa import app
 from medusa.ws.MedusaWebSocketHandler import push_to_websocket

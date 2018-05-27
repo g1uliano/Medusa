@@ -8,11 +8,9 @@ import collections
 import functools
 import logging
 import traceback
-from builtins import map
-from builtins import object
-from builtins import str
 
 from six import text_type, viewitems
+from six.moves import map
 
 log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler())

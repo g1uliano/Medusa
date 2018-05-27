@@ -7,7 +7,6 @@ from __future__ import unicode_literals
 import os
 import shutil
 import stat
-from builtins import object
 
 from medusa import app, db, failed_processor, helpers, logger, notifiers, post_processor
 from medusa.clients import torrent

@@ -6,7 +6,6 @@ import logging
 import random
 import string
 import time
-from builtins import range
 
 import jwt
 
@@ -15,6 +14,7 @@ from medusa.logger.adapters.style import BraceAdapter
 from medusa.server.api.v2.base import BaseRequestHandler
 
 from six import text_type
+from six.moves import range
 
 from tornado.escape import json_decode
 

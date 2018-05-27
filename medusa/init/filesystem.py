@@ -9,13 +9,13 @@ import shutil
 import sys
 import tarfile
 import tempfile # noqa # pylint: disable=unused-import
-from builtins import map
 
 import certifi
 
 import rarfile
 
 from six import binary_type, text_type, viewitems
+from six.moves import map
 
 
 fs_encoding = sys.getfilesystemencoding()

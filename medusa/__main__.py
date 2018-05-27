@@ -59,8 +59,6 @@ import subprocess
 import sys
 import threading
 import time
-from builtins import object
-from builtins import str
 
 from configobj import ConfigObj
 

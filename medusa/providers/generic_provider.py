@@ -6,9 +6,6 @@ from __future__ import unicode_literals
 
 import logging
 import re
-from builtins import map
-from builtins import object
-from builtins import str
 from collections import OrderedDict, defaultdict
 from datetime import datetime, timedelta
 from itertools import chain
@@ -55,6 +52,7 @@ from pytimeparse import parse
 from requests.utils import add_dict_to_cookiejar, dict_from_cookiejar
 
 from six import itervalues
+from six.moves import map
 
 log = BraceAdapter(logging.getLogger(__name__))
 log.logger.addHandler(logging.NullHandler())

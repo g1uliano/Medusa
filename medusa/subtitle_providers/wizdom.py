@@ -6,7 +6,6 @@ import io
 import logging
 import os
 import zipfile
-from builtins import str
 
 from babelfish import Language
 

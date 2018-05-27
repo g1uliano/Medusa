@@ -5,7 +5,6 @@ import copy
 import io
 import logging
 import re
-from builtins import str
 from zipfile import ZipFile, is_zipfile
 
 from babelfish import Language

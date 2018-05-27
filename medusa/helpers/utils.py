@@ -3,7 +3,6 @@
 """General utility functions."""
 from __future__ import unicode_literals
 
-from builtins import str
 from collections import Iterable
 from datetime import datetime
 from distutils.util import strtobool

@@ -7,8 +7,6 @@ from __future__ import unicode_literals
 import logging
 import os
 import re
-from builtins import range
-from builtins import zip
 from collections import namedtuple
 
 from medusa import (
@@ -33,6 +31,7 @@ from medusa.providers.nzb.nzb_provider import NZBProvider
 from requests.compat import urljoin
 
 from six import iteritems, itervalues, text_type
+from six.moves import range, zip
 
 import validators
 
