@@ -25,7 +25,7 @@ from medusa.providers.torrent.torrent_provider import TorrentProvider
 
 from requests.compat import urljoin
 
-from six import iteritems, itervalues, text_type as str
+from six import iteritems, itervalues, text_type
 
 
 log = BraceAdapter(logging.getLogger(__name__))
@@ -97,7 +97,7 @@ class TorznabProvider(TorrentProvider):
                     search_params.update(match_indexer)
 
                     if ep_obj.series.air_by_date or ep_obj.series.sports:
-                        date_str = str(ep_obj.airdate)
+                        date_str = text_type(ep_obj.airdate)
                         search_params['season'] = date_str.partition('-')[0]
                         search_params['ep'] = date_str.partition('-')[2].replace('-', '/')
                     else:

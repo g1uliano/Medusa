@@ -14,7 +14,7 @@ from medusa.session.core import MedusaSession
 
 from requests.exceptions import HTTPError, RequestException
 
-from six import text_type as str
+from six import text_type
 
 log = BraceAdapter(logging.getLogger(__name__))
 log.logger.addHandler(logging.NullHandler())
@@ -110,7 +110,7 @@ class Notifier(object):
                     return False
 
                 params = {
-                    provider: str(tvdb_id)
+                    provider: text_type(tvdb_id)
                 }
             else:
                 params = {}

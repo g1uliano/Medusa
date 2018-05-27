@@ -32,7 +32,7 @@ from medusa.providers.nzb.nzb_provider import NZBProvider
 
 from requests.compat import urljoin
 
-from six import iteritems, itervalues, text_type as str
+from six import iteritems, itervalues, text_type
 
 import validators
 
@@ -133,7 +133,7 @@ class NewznabProvider(NZBProvider):
                     search_params.update(match_indexer)
 
                     if ep_obj.series.air_by_date or ep_obj.series.sports:
-                        date_str = str(ep_obj.airdate)
+                        date_str = text_type(ep_obj.airdate)
                         search_params['season'] = date_str.partition('-')[0]
                         search_params['ep'] = date_str.partition('-')[2].replace('-', '/')
                     else:
@@ -242,7 +242,7 @@ class NewznabProvider(NZBProvider):
 
                     seeders = leechers = -1
                     if 'gingadaddy' in self.url:
-                        size_regex = re.search(r'\d*.?\d* [KMGT]B', str(item.description))
+                        size_regex = re.search(r'\d*.?\d* [KMGT]B', text_type(item.description))
                         item_size = size_regex.group() if size_regex else -1
                     else:
                         item_size = item.size.get_text(strip=True) if item.size else -1
@@ -309,9 +309,9 @@ class NewznabProvider(NZBProvider):
     def config_string(self):
         """Generate a '|' delimited string of instance attributes, for saving to config.ini."""
         return '|'.join([
-            self.name, self.url, self.api_key, self.cat_ids, str(int(self.enabled)),
-            self.search_mode, str(int(self.search_fallback)),
-            str(int(self.enable_daily)), str(int(self.enable_backlog)), str(int(self.enable_manualsearch))
+            self.name, self.url, self.api_key, self.cat_ids, text_type(int(self.enabled)),
+            self.search_mode, text_type(int(self.search_fallback)),
+            text_type(int(self.enable_daily)), text_type(int(self.enable_backlog)), text_type(int(self.enable_manualsearch))
         ])
 
     @staticmethod

@@ -6,7 +6,7 @@
     from medusa.indexers.indexer_api import indexerApi
     from medusa.indexers.indexer_config import indexerConfig
 
-    from six import iteritems, text_type as str
+    from six import iteritems, text_type
 %>
 <%block name="scripts">
 <script type="text/javascript" src="js/add-show-options.js?${sbPID}"></script>
@@ -19,7 +19,7 @@ const startVue = () => {
             title: 'Existing Show'
         },
         data() {
-            <% indexers = { str(i): { 'name': v['name'], 'showUrl': v['show_url'] } for i, v in iteritems(indexerConfig) } %>
+            <% indexers = { text_type(i): { 'name': v['name'], 'showUrl': v['show_url'] } for i, v in iteritems(indexerConfig) } %>
             return {
                 // @FIXME: Python conversions (fix when config is loaded before routes)
                 indexers: ${json.dumps(indexers)},
