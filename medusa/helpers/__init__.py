@@ -977,7 +977,7 @@ def encrypt(data, encryption_version=0, _decrypt=False):
     elif encryption_version == 2:
         if _decrypt:
             return ''.join(unichr(ord(x) ^ ord(y)) for (x, y) in zip(base64.decodestring(data),
-                                                                  cycle(app.ENCRYPTION_SECRET)))
+                                                                     cycle(app.ENCRYPTION_SECRET)))
         else:
             return base64.encodestring(
                 ''.join(unichr(ord(x) ^ ord(y)) for (x, y) in zip(data, cycle(app.ENCRYPTION_SECRET)))).strip()
