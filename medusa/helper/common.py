@@ -10,7 +10,7 @@ from fnmatch import fnmatch
 
 from medusa import app
 
-from six import PY3, text_type
+from six import PY3, binary_type, text_type
 
 
 log = logging.getLogger(__name__)
@@ -153,7 +153,7 @@ def is_sync_file(filename):
     :return: ``True`` if the ``filename`` is a sync file, ``False`` otherwise
     """
 
-    if isinstance(filename, (str, text_type)):
+    if isinstance(filename, (binary_type, text_type)):
         extension = filename.rpartition('.')[2].lower()
 
         return (extension in app.SYNC_FILES or
@@ -170,7 +170,7 @@ def is_torrent_or_nzb_file(filename):
     :return: ``True`` if the ``filename`` is a NZB file or a torrent file, ``False`` otherwise
     """
 
-    if not isinstance(filename, (str, text_type)):
+    if not isinstance(filename, (binary_type, text_type)):
         return False
 
     return filename.rpartition('.')[2].lower() in ['nzb', 'torrent']
@@ -263,7 +263,7 @@ def remove_extension(filename):
     :return: The ``filename`` without its extension.
     """
 
-    if isinstance(filename, (str, text_type)) and '.' in filename:
+    if isinstance(filename, (binary_type, text_type)) and '.' in filename:
         basename, _, extension = filename.rpartition('.')
 
         if basename and extension.lower() in ['nzb', 'torrent'] + media_extensions:
@@ -280,7 +280,7 @@ def replace_extension(filename, new_extension):
     :return: The ``filename`` with the new extension
     """
 
-    if isinstance(filename, (str, text_type)) and '.' in filename:
+    if isinstance(filename, (binary_type, text_type)) and '.' in filename:
         basename, _, _ = filename.rpartition('.')
 
         if basename:
@@ -296,7 +296,7 @@ def sanitize_filename(filename):
     :return: The ``filename``cleaned
     """
 
-    if isinstance(filename, (str, text_type)):
+    if isinstance(filename, (binary_type, text_type)):
         filename = re.sub(r'[\\/\*]', '-', filename)
         filename = re.sub(r'[:"<>|?]', '', filename)
         filename = re.sub(r'™', '', filename)  # Trade Mark Sign unicode: \u2122
