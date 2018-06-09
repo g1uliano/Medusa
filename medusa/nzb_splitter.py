@@ -21,6 +21,7 @@
 
 from __future__ import unicode_literals
 
+import io
 import logging
 import re
 
@@ -130,7 +131,7 @@ def save_nzb(nzb_name, nzb_string):
     :param nzb_string: Content to write in file
     """
     try:
-        with open(nzb_name + ".nzb", 'w') as nzb_fh:
+        with io.open(nzb_name + '.nzb', 'wb') as nzb_fh:
             nzb_fh.write(nzb_string)
 
     except EnvironmentError as error:

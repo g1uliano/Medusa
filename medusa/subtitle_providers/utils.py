@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 import hashlib
+import io
 
 
 def hash_itasa(video_path):
@@ -13,6 +14,6 @@ def hash_itasa(video_path):
     :rtype: str
     """
     readsize = 1024 * 1024 * 10
-    with open(video_path, 'rb') as f:
+    with io.open(video_path, 'rb') as f:
         data = f.read(readsize)
     return hashlib.md5(data).hexdigest()

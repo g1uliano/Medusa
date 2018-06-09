@@ -1552,7 +1552,7 @@ def get_showname_from_indexer(indexer, indexer_id, lang='en'):
 def get_image_size(image_path):
     """Determine the image type of image_path and return its size.."""
     img_ext = os.path.splitext(image_path)[1].lower().strip('.')
-    with open(image_path, 'rb') as f:
+    with io.open(image_path, 'rb') as f:
         head = f.read(24)
         if len(head) != 24:
             return

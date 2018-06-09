@@ -2,6 +2,7 @@
 """Release refiner."""
 from __future__ import unicode_literals
 
+import io
 import logging
 import os
 
@@ -125,7 +126,7 @@ def get_release_name(release_file):
     if not release_file or not os.path.isfile(release_file):
         return
 
-    with open(release_file, 'r') as f:
+    with io.open(release_file, 'rb') as f:
         release_name = f.read().strip()
 
     # skip if no release name was found

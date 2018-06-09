@@ -18,6 +18,7 @@
 
 from __future__ import unicode_literals
 
+import io
 from mimetypes import guess_type
 from os.path import isfile, join, normpath
 
@@ -62,7 +63,7 @@ class GenericMedia(object):
         static_media_path = self.static_media_path
 
         if isfile(static_media_path):
-            with open(static_media_path, 'rb') as content:
+            with io.open(static_media_path, 'rb') as content:
                 return content.read()
 
         return None

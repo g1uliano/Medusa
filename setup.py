@@ -1,4 +1,5 @@
 """Use setup tools to install Medusa."""
+import io
 import os
 import sys
 
@@ -27,7 +28,7 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 
-with open(os.path.join(here, 'readme.md'), 'r') as r:
+with io.open(os.path.join(here, 'readme.md'), 'rb') as r:
     long_description = r.read()
 
 setup(

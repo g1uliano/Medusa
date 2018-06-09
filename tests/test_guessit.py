@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 import datetime
+import io
 import os
 
 import guessit
@@ -57,7 +58,7 @@ def _format_param(param):
 def _parameters(single_test=None):
     parameters = []
     input_file = os.path.join(__location__, __name__.split('.')[-1] + '.yml')
-    with open(input_file, 'r') as stream:
+    with io.open(input_file, 'rb') as stream:
         data = yaml.load(stream)
 
     for release_names, expected in data.items():

@@ -2,6 +2,7 @@
 """Configuration for pytest."""
 from __future__ import unicode_literals
 
+import io
 import os
 from collections import namedtuple
 
@@ -34,7 +35,7 @@ def providers():
 
         # Load provider test config
         input_file = os.path.join(__location__, provider.type, provider.name, provider.name + '_test.yaml')
-        with open(input_file, 'r') as stream:
+        with io.open(input_file, 'rb') as stream:
             test_data = yaml.load(stream)
 
         # Update provider with test data

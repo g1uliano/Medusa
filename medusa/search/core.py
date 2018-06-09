@@ -5,6 +5,7 @@ from __future__ import division
 from __future__ import unicode_literals
 
 import datetime
+import io
 import logging
 import os
 import threading
@@ -83,7 +84,7 @@ def _download_result(result):
 
         # save the data to disk
         try:
-            with open(file_name, u'w') as file_out:
+            with io.open(file_name, u'wb') as file_out:
                 file_out.write(result.extra_info[0])
 
             chmod_as_parent(file_name)

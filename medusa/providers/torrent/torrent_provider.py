@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 
+import io
 import logging
 import os
 import re
@@ -116,7 +117,7 @@ class TorrentProvider(GenericProvider):
             return False
 
         try:
-            with open(file_name, 'rb') as f:
+            with io.open(file_name, 'rb') as f:
                 meta_info = bencode.bdecode(f.read())
             return 'info' in meta_info and meta_info['info']
         except BTFailure as e:

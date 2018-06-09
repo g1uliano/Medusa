@@ -1,5 +1,6 @@
 """Dredd hook."""
 import ConfigParser
+import io
 import json
 import urlparse
 from collections import Mapping
@@ -25,7 +26,7 @@ stash = {
 def load_api_description(transactions):
     """Load api description."""
     global api_description
-    with open(transactions[0]['origin']['filename'], 'r') as stream:
+    with io.open(transactions[0]['origin']['filename'], 'rb') as stream:
         api_description = yaml.safe_load(stream)
 
 
@@ -162,7 +163,7 @@ def start():
     config.set('General', 'web_username', stash['web-username'])
     config.set('General', 'web_password', stash['web-password'])
     config.set('General', 'api_key', stash['api-key'])
-    with open('config.ini', 'wb') as configfile:
+    with io.open('config.ini', 'wb') as configfile:
         config.write(configfile)
 
     sys.path.insert(1, app_dir)
