@@ -38,6 +38,9 @@ class Indexer(Identifier):
         """Magic method bool."""
         return self.id is not None
 
+    # Python 2 compatibility
+    __nonzero__ = __bool__
+
     def __repr__(self):
         """Magic method."""
         return '<Indexer [{0}:{1}]>'.format(self.slug, self.id)
@@ -45,6 +48,9 @@ class Indexer(Identifier):
     def __str__(self):
         """Magic method."""
         return str(self.slug)
+
+    # Python 2 compatibility
+    __unicode__ = __str__
 
     def __hash__(self):
         """Magic method."""

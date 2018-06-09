@@ -83,6 +83,9 @@ class BraceMessage(object):
         result = text_type(self.fmt)
         return result.format(*self.args, **self.kwargs) if self.args or self.kwargs else result
 
+    # Python 2 compatibility
+    __unicode__ = __str__
+
 
 def initialize():
     """Replace standard getLogger with our enhanced one."""

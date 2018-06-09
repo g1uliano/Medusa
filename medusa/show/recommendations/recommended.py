@@ -165,6 +165,9 @@ class RecommendedShow(object):
         """Return a string repr of the recommended list."""
         return 'Recommended show {0} from recommended list: {1}'.format(self.title, self.recommender)
 
+    # Python 2 compatibility
+    __unicode__ = __str__
+
 
 @load_anidb_api
 @recommended_series_cache.cache_on_arguments()

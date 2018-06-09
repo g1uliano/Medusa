@@ -14,6 +14,9 @@ class Identifier(object):
         """Magic method."""
         raise NotImplementedError
 
+    # Python 2 compatibility
+    __nonzero__ = __bool__
+
     def __ne__(self, other):
         """Magic method."""
         return not self == other

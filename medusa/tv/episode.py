@@ -135,6 +135,9 @@ class RelativeNumber(Identifier):
         """Magic method."""
         return self.season is not None and self.episode is not None
 
+    # Python 2 compatibility
+    __nonzero__ = __bool__
+
     def __repr__(self):
         """Magic method."""
         return '<RelativeNumber [s{0:02d}e{1:02d}]>'.format(self.season, self.episode)
@@ -142,6 +145,9 @@ class RelativeNumber(Identifier):
     def __str__(self):
         """Magic method."""
         return 's{0:02d}e{1:02d}'.format(self.season, self.episode)
+
+    # Python 2 compatibility
+    __unicode__ = __str__
 
     def __hash__(self):
         """Magic method."""
@@ -168,6 +174,9 @@ class AbsoluteNumber(EpisodeNumber):
         """Magic method."""
         return self.episode is not None
 
+    # Python 2 compatibility
+    __nonzero__ = __bool__
+
     def __repr__(self):
         """Magic method."""
         return '<AbsoluteNumber [e{0:02d}]>'.format(self.episode)
@@ -175,6 +184,9 @@ class AbsoluteNumber(EpisodeNumber):
     def __str__(self):
         """Magic method."""
         return 'e{0:02d}'.format(self.episode)
+
+    # Python 2 compatibility
+    __unicode__ = __str__
 
     def __hash__(self):
         """Magic method."""
@@ -200,6 +212,9 @@ class AirByDateNumber(EpisodeNumber):
         """Magic method."""
         return self.air_date is not None
 
+    # Python 2 compatibility
+    __nonzero__ = __bool__
+
     def __repr__(self):
         """Magic method."""
         return '<AirByDateNumber [{0!r}]>'.format(self.air_date)
@@ -207,6 +222,9 @@ class AirByDateNumber(EpisodeNumber):
     def __str__(self):
         """Magic method."""
         return self.air_date.strftime(self.date_fmt)
+
+    # Python 2 compatibility
+    __unicode__ = __str__
 
     def __hash__(self):
         """Magic method."""
@@ -1022,7 +1040,7 @@ class Episode(TV):
             self.hastbn = bool(os.path.isfile(replace_extension(nfo_file, 'tbn')))
 
     def __str__(self):
-        """Represent a string.
+        """Unicode representation.
 
         :return:
         :rtype: unicode
@@ -1040,6 +1058,9 @@ class Episode(TV):
         result += 'status: %r\n' % self.status
         result += 'quality: %r\n' % self.quality
         return result
+
+    # Python 2 compatibility
+    __unicode__ = __str__
 
     def to_json(self, detailed=True):
         """Return the json representation."""

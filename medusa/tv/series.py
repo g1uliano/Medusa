@@ -163,6 +163,9 @@ class SeriesIdentifier(Identifier):
         """Magic method."""
         return self.indexer is not None and self.id is not None
 
+    # Python 2 compatibility
+    __nonzero__ = __bool__
+
     def __repr__(self):
         """Magic method."""
         return '<SeriesIdentifier [{0!r} - {1}]>'.format(self.indexer, self.id)
@@ -170,6 +173,9 @@ class SeriesIdentifier(Identifier):
     def __str__(self):
         """Magic method."""
         return '{0}{1}'.format(self.indexer, self.id)
+
+    # Python 2 compatibility
+    __unicode__ = __str__
 
     def __hash__(self):
         """Magic method."""
@@ -1894,33 +1900,6 @@ class Series(TV):
         self.reset_dirty()
 
     def __str__(self):
-        """Represent a string.
-
-        :return:
-        :rtype: str
-        """
-        to_return = ''
-        to_return += 'indexerid: ' + str(self.series_id) + '\n'
-        to_return += 'indexer: ' + str(self.indexer) + '\n'
-        to_return += 'name: ' + self.name + '\n'
-        to_return += 'location: ' + self.raw_location + '\n'  # skip location validation
-        if self.network:
-            to_return += 'network: ' + self.network + '\n'
-        if self.airs:
-            to_return += 'airs: ' + self.airs + '\n'
-        to_return += 'status: ' + self.status + '\n'
-        to_return += 'start_year: ' + str(self.start_year) + '\n'
-        if self.genre:
-            to_return += 'genre: ' + self.genre + '\n'
-        to_return += 'classification: ' + self.classification + '\n'
-        to_return += 'runtime: ' + str(self.runtime) + '\n'
-        to_return += 'quality: ' + str(self.quality) + '\n'
-        to_return += 'scene: ' + str(self.is_scene) + '\n'
-        to_return += 'sports: ' + str(self.is_sports) + '\n'
-        to_return += 'anime: ' + str(self.is_anime) + '\n'
-        return to_return
-
-    def __unicode__(self):
         """Unicode representation.
 
         :return:
@@ -1946,6 +1925,9 @@ class Series(TV):
         to_return += u'sports: {0}\n'.format(self.is_sports)
         to_return += u'anime: {0}\n'.format(self.is_anime)
         return to_return
+
+    # Python 2 compatibility
+    __unicode__ = __str__
 
     def to_json(self, detailed=True):
         """Return JSON representation."""

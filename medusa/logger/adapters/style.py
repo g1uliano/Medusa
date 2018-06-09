@@ -55,6 +55,9 @@ class BraceMessage(object):
             )
             return repr(self)
 
+    # Python 2 compatibility
+    __unicode__ = __str__
+
     def __repr__(self):
         """Convert to class representation."""
         sep = ', '

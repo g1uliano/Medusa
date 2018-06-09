@@ -872,6 +872,5 @@ class GenericProvider(object):
         """Return provider name and provider type."""
         return '{provider_name} ({provider_type})'.format(provider_name=self.name, provider_type=self.provider_type)
 
-    def __unicode__(self):
-        """Return provider name and provider type."""
-        return '{provider_name} ({provider_type})'.format(provider_name=self.name, provider_type=self.provider_type)
+    # Python 2 compatibility
+    __unicode__ = __str__

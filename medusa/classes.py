@@ -185,6 +185,9 @@ class SearchResult(object):
 
         return my_string
 
+    # Python 2 compatibility
+    __unicode__ = __str__
+
     def file_name(self):
         return u'{0}.{1}'.format(self.episodes[0].pretty_name(), self.result_type)
 

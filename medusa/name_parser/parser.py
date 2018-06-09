@@ -501,6 +501,9 @@ class ParseResult(object):
                                              total_time=self.total_time))
         return helpers.canonical_name(obj, fmt='{key}: {value}', separator=', ')
 
+    # Python 2 compatibility
+    __unicode__ = __str__
+
     def get_quality(self, guess, extend=False):
         """Return video quality from guess or name.
 

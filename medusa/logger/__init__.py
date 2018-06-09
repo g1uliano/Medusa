@@ -471,6 +471,9 @@ class LogLine(object):
         """String representation."""
         return '\n'.join([self.line] + (self.traceback_lines or []))
 
+    # Python 2 compatibility
+    __unicode__ = __str__
+
 
 class ContextFilter(logging.Filter):
     """This is a filter which injects contextual information into the log, in our case: commit hash."""
