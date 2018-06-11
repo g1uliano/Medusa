@@ -1,8 +1,9 @@
 <%inherit file="/layouts/main.mako"/>
 <%!
     import json
-    from medusa import subtitles
+
     from medusa import app
+    from medusa import subtitles
 %>
 <%block name="scripts">
 <script>
@@ -14,9 +15,17 @@ const startVue = () => {
             title: 'Config - Subtitles'
         },
         data() {
+            <%
+                subtitle_code_filter = [{'id': code, 'name': subtitles.name_from_code(code)}
+                                        for code in subtitles.subtitle_code_filter()]
+                wanted_languages = [{'id': code, 'name': subtitles.name_from_code(code)}
+                                    for code in subtitles.wanted_languages()]
+            %>
             return {
                 header: 'Subtitles',
-                services: JSON.parse('${json.dumps(subtitles.sorted_service_list())}')
+                services: ${json.dumps(subtitles.sorted_service_list())},
+                subtitleCodeFilter: ${json.dumps(subtitle_code_filter)},
+                wantedLanguages: ${json.dumps(wanted_languages)},
             };
         },
         computed: {
@@ -25,63 +34,28 @@ const startVue = () => {
                 return services.map(service => service.name + ':' + (service.enabled ? '1' : '0')).join(' ');
             }
         },
+        methods: {
+            serviceOrderUpdated(event, ui) {
+                event.preventDefault(); // Stop sortable from changing the DOM, let Vue do it.
+                const newOrder = $('#service_order_list').sortable('toArray');
+                this.services = this.services.slice().sort((a, b) => {
+                    return newOrder.indexOf(a.name) - newOrder.indexOf(b.name);
+                });
+            }
+        },
         mounted() {
-            $("#subtitles_languages").tokenInput([${','.join("{\"id\": \"" + code + "\", name: \"" + subtitles.name_from_code(code) + "\"}" for code in subtitles.subtitle_code_filter())}], {
+            const { subtitleCodeFilter, wantedLanguages, serviceOrderUpdated } = this;
+            $("#subtitles_languages").tokenInput(subtitleCodeFilter, {
                 method: 'POST',
                 hintText: 'Write to search a language and select it',
                 preventDuplicates: true,
-                prePopulate: [${','.join('{"id": "' + code + '", name: "' + subtitles.name_from_code(code) + '"}' for code in subtitles.wanted_languages())}],
+                prePopulate: wantedLanguages,
                 resultsFormatter: item => "<li><img src='images/subtitles/flags/" + item.id + ".png' onError='this.onerror=null;this.src=\"images/flags/unknown.png\";' style='vertical-align: middle !important;' /> " + item.name + "</li>",
                 tokenFormatter: item => "<li><img src='images/subtitles/flags/" + item.id + ".png' onError='this.onerror=null;this.src=\"images/flags/unknown.png\";' style='vertical-align: middle !important;' /> " + item.name + "</li>"
             });
             $('#config-components').tabs();
             $('#subtitles_dir').fileBrowser({ title: 'Select Subtitles Download Directory' });
-            $('#service_order_list').disableSelection();
-
-            //
-            // Below this line is stuff that may or may not be doing anything?
-            // ----------------------------------------------------------------------------------------
-
-            $.fn.showHideServices = function() {
-                $('.serviceDiv').each(function() {
-                    const serviceName = $(this).attr('id');
-                    const selectedService = $('#editAService :selected').val();
-
-                    if (selectedService + 'Div' === serviceName) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            };
-
-            $.fn.addService = function(id, name, url, key, isDefault, showService) { // eslint-disable-line max-params
-                if (url.match('/$') === null) {
-                    url += '/';
-                }
-
-                if ($('#service_order_list > #' + id).length === 0 && showService !== false) {
-                    const toAdd = '<li class="ui-state-default" id="' + id + '"> <input type="checkbox" id="enable_' + id + '" class="service_enabler" CHECKED> <a href="' + MEDUSA.config.anonRedirect + url + '" class="imgLink" target="_new"><img src="images/services/newznab.gif" alt="' + name + '" width="16" height="16"></a> ' + name + '</li>';
-
-                    $('#service_order_list').append(toAdd);
-                    $('#service_order_list').sortable('refresh');
-                }
-            };
-
-            $.fn.deleteService = function(id) {
-                $('#service_order_list > #' + id).remove();
-            };
-
-            $('#editAService').on('change', () => {
-                $.showHideServices();
-            });
-
-            // Initialization stuff
-            $(this).showHideServices();
-
-            // ----------------------------------------------------------------------------------------
-            // Above this line is stuff that may or may not be doing anything?
-            //
+            $('#service_order_list').sortable({ update: serviceOrderUpdated }).disableSelection();
         },
         filters: {
             capitalize: str => str.replace(/\b\w/g, str => str.toUpperCase())

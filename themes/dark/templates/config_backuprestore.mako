@@ -14,12 +14,12 @@ const startVue = () => {
                 backup: {
                     disabled: false,
                     status: '',
-                    dir: ''
+                    // dir: ''
                 },
                 restore: {
                     disabled: false,
                     status: '',
-                    file: ''
+                    // file: ''
                 }
             };
         },
@@ -40,30 +40,34 @@ const startVue = () => {
         methods: {
             runBackup() {
                 const { backup } = this;
-                const { dir } = backup;
+                const dir = $('#backupDir').val();
 
-                this.backup.disabled = true;
-                this.backup.status = MEDUSA.config.loading;
+                if (!dir) return;
+
+                backup.disabled = true;
+                backup.status = MEDUSA.config.loading;
 
                 $.get('config/backuprestore/backup', {
                     backupDir: dir
                 }).done(data => {
-                    this.backup.status = data;
-                    this.backup.disabled = false;
+                    backup.status = data;
+                    backup.disabled = false;
                 });
             },
             runRestore() {
                 const { restore } = this;
-                const { file } = restore;
+                const dir = $('#backupFile').val();
 
-                this.restore.disabled = true;
-                this.restore.status = MEDUSA.config.loading;
+                if (!dir) return;
+
+                restore.disabled = true;
+                restore.status = MEDUSA.config.loading;
 
                 $.get('config/backuprestore/restore', {
-                    backupFile: file
+                    backupFile: dir
                 }).done(data => {
-                    this.restore.status = data;
-                    this.restore.disabled = false;
+                    restore.status = data;
+                    restore.disabled = false;
                 });
             }
         }
